@@ -23,8 +23,9 @@ major='17.50'
 minor='511655'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
+#latest https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.50-511655.tar.xz
 source=("https://www2.ati.com/drivers/linux/ubuntu/${prefix}${major}-${minor}.tar.xz")
-#source=("https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.50-511655.tar.xz")
+
 sha256sums=('a623f95b7bdbad981e19bd30304f7943f8827d230b702dc5b580793efe70ea07')
 
 pkgver() {
@@ -32,6 +33,7 @@ pkgver() {
 }
 
 package() {
+# 	curl doesn't seem to work, manually download tar and extract to current directory
 #	curl "${source}" -OLJ | tar -xz
 	mkdir -p "${srcdir}/opencl"
 	cd "${srcdir}/opencl"
